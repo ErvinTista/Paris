@@ -17,7 +17,7 @@
 `dnsenum domain`
 `nslookup -type=TXT domain IP`
 
-###TCP/UDP Port Scan
+### TCP/UDP Port Scan
 `nc -nvv -w -z IP port-port`
 
 ### Windows
