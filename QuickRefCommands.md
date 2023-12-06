@@ -7,7 +7,7 @@ nmap -sn IP_range
 nmap -sV -sC -p- -T4 $ip
 
 ### FeroxBuster for URLs
-feroxbuster --url domain --depth 2 --wordlist /usr/share/wordlists/common.txt
+`feroxbuster --url domain --depth 2 --wordlist /usr/share/wordlists/common.txt`
 
 ### DNS Enumeration
 host domain
