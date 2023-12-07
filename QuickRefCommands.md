@@ -25,8 +25,10 @@
 `gobuster dir -u IP -w /usr/share/wordlists/dirb/common.txt -t 5`<br>
 `feroxbuster --url domain --depth 2 --wordlist /usr/share/wordlists/common.txt -x .txt,.jpg`<br>
 
-
 ## Exploit
+
+#### Password Cracking
+hashcat -a 0 -m #hash_type hash.txt dictionary_list.txt
 
 ## Pivoting and Tunneling
 
