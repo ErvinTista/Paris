@@ -25,6 +25,34 @@
 `gobuster dir -u IP -w /usr/share/wordlists/dirb/common.txt -t 5`<br>
 `feroxbuster --url domain --depth 2 --wordlist /usr/share/wordlists/common.txt -x .txt,.jpg`<br>
 
+#### Linux Enumeration
+`whoami`<br>
+`hostname`<br>
+`id`<br>
+`cat /etc/passwd`<br>
+`cat /etc/shadow`<br>
+`cat /etc/os-release`<br>
+`uname -a`<br>
+`ip a`<br>
+`ifconfig`<br>
+`route`<br>
+`history`<br>
+`netstat -ano`<br>
+`crontab -l`<br>
+`cat /etc/cron*`<br>
+`sudo -l`<br>
+`env`<br>
+`cat /etc/profile`<br>
+`cat /etc/bashrc`<br>
+`cat ~/.bash_profile`<br>
+`cat ~/.bashrc`<br>
+`ps aux`<br>
+`ps -elf`<br>
+`find / -xdev -type d|f -perm -0002 -ls 2> /dev/null`<br>
+`find / -perm -4000 -user root -exec ls -ld {} \; 2> /dev/null`<br>
+
+Also use LinPEAS or LinENUM
+
 ## Exploit
 
 #### Password Cracking
@@ -41,3 +69,4 @@
 |Description|Link|
 |-----------|----|
 |Linux Privesc|https://payatu.com/blog/a-guide-to-linux-privilege-escalation/|
+|LinWinMacPEAS|https://github.com/carlospolop/PEASS-ng|
