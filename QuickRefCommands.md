@@ -28,7 +28,7 @@
 ## Exploit
 
 #### Password Cracking
-hashcat -a 0 -m #hash_type hash.txt dictionary_list.txt
+`hashcat -a 0 -m #hash_type hash.txt dictionary_list.txt`<br>
 
 ## Pivoting and Tunneling
 
@@ -36,3 +36,8 @@ hashcat -a 0 -m #hash_type hash.txt dictionary_list.txt
 
 ## Shells and One Liners
 
+
+## Resources and Links
+|Description|Link|
+|-----------|----|
+|Linux Privesc|https://payatu.com/blog/a-guide-to-linux-privilege-escalation/|
