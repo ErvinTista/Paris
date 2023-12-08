@@ -6,6 +6,8 @@
 `nmap -sn IP_range`<br>
 `nmap -sV -sC -p- -T4 $ip`<br>
 
+<img width="300" alt="NMAP_top_ports" src="https://github.com/ErvinTista/Paris/assets/13991872/85159f37-8f60-489e-b515-7a8f4c77e8d7">
+
 #### DNS Enumeration
 `host domain`<br>
 `host -t mx domain`<br>
