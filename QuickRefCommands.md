@@ -1,10 +1,9 @@
 ## Scanning and Enumeration
 
 #### NMAP
-`nmap -sS IP`<br>
-`nmap -sT IP`<br>
 `nmap -sn IP_range`<br>
-`nmap -sV -sC -p- -T4 $ip`<br>
+`nmap -p- -sS -iL Live_Hosts_List`<br>
+`nmap -sV -sC -p Open_Ports -iL Live_Hosts_List`<br>
 
 <img width="300" alt="NMAP_top_ports" src="https://github.com/ErvinTista/Paris/assets/13991872/85159f37-8f60-489e-b515-7a8f4c77e8d7">
 
