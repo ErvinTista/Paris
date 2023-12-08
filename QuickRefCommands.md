@@ -48,7 +48,7 @@
 `cat ~/.bashrc`<br>
 `ps aux`<br>
 `ps -elf`<br>
-`find / -xdev -type d|f -perm -0002 -ls 2> /dev/null`<br>
+`find / -perm -u=s -type f 2>/dev/null`<br>
 `find / -perm -4000 -user root -exec ls -ld {} \; 2> /dev/null`<br>
 
 Also use LinPEAS or LinENUM
