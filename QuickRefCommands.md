@@ -24,7 +24,7 @@
 #### Web Enumeration
 `sudo nmap -p80 --script=http-enum -sV IP` <br>
 `gobuster dir -u IP -w /usr/share/wordlists/dirb/common.txt -t 5`<br>
-`feroxbuster --url domain --depth 2 --wordlist /usr/share/wordlists/common.txt -x .txt,.jpg`<br>
+`feroxbuster --url domain --depth 2 --wordlist /usr/share/wordlists/dirb/common.txt -x .txt,.jpg`<br>
 
 #### Linux Enumeration
 `whoami`<br>
@@ -51,6 +51,7 @@
 `ps -elf`<br>
 `find / -perm -u=s -type f 2>/dev/null`<br>
 `find / -perm -4000 -user root -exec ls -ld {} \; 2> /dev/null`<br>
+`find / -perm -u=s -type f 2>/dev/null`<br>
 
 Also use LinPEAS or LinENUM
 
