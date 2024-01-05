@@ -92,3 +92,4 @@
 |-----------|----|
 |Linux Privesc|https://payatu.com/blog/a-guide-to-linux-privilege-escalation/|
 |LinWinMacPEAS|https://github.com/carlospolop/PEASS-ng|
+|Nmap Pretty|https://github.com/honze-net/nmap-bootstrap-xsl|
