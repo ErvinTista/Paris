@@ -93,3 +93,6 @@
 |Linux Privesc|https://payatu.com/blog/a-guide-to-linux-privilege-escalation/|
 |LinWinMacPEAS|https://github.com/carlospolop/PEASS-ng|
 |Nmap Pretty|https://github.com/honze-net/nmap-bootstrap-xsl|
+|CrackMapExec|https://github.com/byt3bl33d3r/CrackMapExec|
+|NetExec|https://github.com/Pennyw0rth/NetExec|
+|CrackMapExec Cheatsheet|https://cheatsheet.haax.fr/windows-systems/exploitation/crackmapexec/|
