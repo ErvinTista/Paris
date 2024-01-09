@@ -95,4 +95,5 @@
 |Nmap Pretty|https://github.com/honze-net/nmap-bootstrap-xsl|
 |CrackMapExec|https://github.com/byt3bl33d3r/CrackMapExec|
 |NetExec|https://github.com/Pennyw0rth/NetExec|
-|CrackMapExec Cheatsheet|https://cheatsheet.haax.fr/windows-systems/exploitation/crackmapexec/|
+|CrackMapExec Cheatsheet + other good cheatsheets|https://cheatsheet.haax.fr/windows-systems/exploitation/crackmapexec/|
+
