@@ -1,6 +1,7 @@
 ## Windows
 
-impacket-smbserver on attacker machine. Useful when transferring through evilwinrm
+### impacket-smbserver. Useful when transferring through evilwinrm
+On attacker machine. 
 ```
 impacket-smbserver <NameOfServer> $(pwd) -smb2support -user <AnyUser-UsedForLater> -password <AnyPassword-UsedForLater>
 ```
