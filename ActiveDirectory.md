@@ -72,7 +72,7 @@ Windapsearch can be userd to enumerate users, DA
 ```
 windapsearch.py --dc-ip <172.16.5.5> -u "" -U
 python3 windapsearch.py --dc-ip <172.16.5.5> -u <username>@<domainname.local> -p password --da //find domain admins
-python3 windapsearch.py --dc-ip <172.16.5.5> -u <username>@<domainname.local> -p password --PU //find privileged users
+python3 windapsearch.py --dc-ip <172.16.5.5> -u <username>@<domainname.local> -p password -PU //find privileged users
 
 ```
 
@@ -105,11 +105,23 @@ psexec.py <domainName.local>/<username>:<'password'>@<target.ip> //psexec requir
 wmiexec.py <domainName.local>/<username>:<'password'>@<target.ip> //not a fully interactive shell
 ```
 
-Bloodhound - Once domain creds are obtained, you can run bloodhound
+Bloodhound - Once domain creds are obtained, you can run bloodhound - https://github.com/dirkjanm/BloodHound.py. Clone the repo then ```pip install .```
 ```
 sudo bloodhound-python -u <'username'> -p <'password'> -ns <172.16.5.5> -d <domainname.local> -c all
 sudo neo4j start
 bloodhound
 ```
 
+Credentialed Enumeration with Powershell
+```
+Import-Module ActiveDirectory
+Get-ADDomain
+Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName //This will get us a listing of accounts that may be susceptible to a Kerberoasting attack
+Get-ADGroup -Filter * | select name
+```
+
+Snaffler is a tool that can help us acquire credentials or other sensitive data in an Active Directory environment. - https://github.com/SnaffCon/Snaffler
+```
+
+```
 
