@@ -5,7 +5,7 @@
 `nmap -p- -sS -iL Live_Hosts_List`<br>
 `nmap -sV -sC -p Open_Ports -iL Live_Hosts_List`<br>
 
-Clean nmap output for port scan
+Clean nmap output for port scan<br>
 `cat scan.nmap | grep /|cut -d/ -f1| tr "\n" ","| sed 's/,$//'`
 
 <img width="300" alt="NMAP_top_ports" src="https://github.com/ErvinTista/Paris/assets/13991872/85159f37-8f60-489e-b515-7a8f4c77e8d7">
