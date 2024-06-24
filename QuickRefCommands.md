@@ -116,6 +116,10 @@ start
 Can now reach the <IP.of.the.internal.network.you.want.to.reach> through your kali box. no proychains necessary.
 ```
 
+Powershell history
+```
+Cat (Get-PSReadlineOption).HistorySavePath
+```
 
 ## Resources and Links
 |Description|Link|
