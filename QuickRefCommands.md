@@ -1,4 +1,4 @@
-## Scanning and Enumeration
+#unquo# Scanning and Enumeration
 
 #### NMAP
 `nmap -sn IP_range`<br>
@@ -120,6 +120,17 @@ Powershell history
 ```
 Cat (Get-PSReadlineOption).HistorySavePath
 ```
+
+Unquoted path in windows
+```
+Powershell
+Get-WmiObject -class Win32_Service -Property Name, DisplayName, PathName, StartMode | Where {$_.PathName -notlike "C:\Windows*" -and $_.PathName -notlike '"*'} | select Name,DisplayName,StartMode,PathName
+
+cmd
+wmic service get name,displayname,startmode,pathname | findstr /i /v "C:\Windows\\" |findstr /i /v """
+```
+
+
 
 ## Resources and Links
 |Description|Link|
