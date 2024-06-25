@@ -29,6 +29,11 @@ Clean nmap output for port scan<br>
 `gobuster dir -u IP -w /usr/share/wordlists/dirb/common.txt -t 5`<br>
 `feroxbuster --url domain --depth 2 --wordlist /usr/share/wordlists/dirb/common.txt -x .txt,.jpg`<br>
 
+#### SNMP Enum
+```
+snmpwalk -v2c -c <public> <IP.address> NET-SNMP-EXTEND-MIB::nsExtendObjects //nsExtendObjects is not included by default
+```
+
 #### Linux Enumeration
 `whoami`<br>
 `hostname`<br>
