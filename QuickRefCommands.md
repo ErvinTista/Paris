@@ -96,6 +96,7 @@ snmpwalk -v2c -c <public> <IP.address> NET-SNMP-EXTEND-MIB::nsExtendObjects //ns
 `python -c 'import pty; pty.spawn("/bin/bash")'`; ctrl -z; stty raw -echo; fg; export TERM=xterm
 
 ### Pivoting with Ligolo - https://github.com/nicocha30/ligolo-ng
+Add listener 
 ```
 Server agent from attacker host then from the victim host(that has 2 nics) retrieve the ligolo agent.
 
@@ -119,6 +120,11 @@ From attacker host, from the context of our agent session:
 start
 
 Can now reach the <IP.of.the.internal.network.you.want.to.reach> through your kali box. no proychains necessary.
+
+Add forwarding
+
+listener_add --add 0.0.0.0:<any-port> --to 127.0.0.1:<listening-port>
+https://www.youtube.com/watch?v=DM1B8S80EvQ
 ```
 
 Powershell history
