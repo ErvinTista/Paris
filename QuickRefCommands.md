@@ -141,7 +141,10 @@ cmd
 wmic service get name,displayname,startmode,pathname | findstr /i /v "C:\Windows\\" |findstr /i /v """
 ```
 
-
+Add rdp to box
+```
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+```
 
 ## Resources and Links
 |Description|Link|
