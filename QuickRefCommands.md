@@ -146,6 +146,11 @@ Add rdp to box
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 ```
 
+Wordpress Enumeration
+```
+wpscan --url http://<target.ip> --enumerate p --plugins-detection aggressive -o outfile.txt
+```
+
 ## Resources and Links
 |Description|Link|
 |-----------|----|
