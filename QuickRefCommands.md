@@ -123,8 +123,11 @@ Can now reach the <IP.of.the.internal.network.you.want.to.reach> through your ka
 
 Add forwarding
 
-listener_add --add 0.0.0.0:<any-port> --to 127.0.0.1:<listening-port>
+listener_add --addr 0.0.0.0:<any-port> --to 127.0.0.1:<listening-port>
 https://www.youtube.com/watch?v=DM1B8S80EvQ
+
+delete route
+sudo route del -net <172.16.187.0> netmask <255.255.255.0> dev ligolo
 ```
 
 Powershell history
