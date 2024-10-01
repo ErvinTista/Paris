@@ -37,3 +37,6 @@
 > xp_dirtree 'C:\inetpub\'
 > xp_dirtree 'C:\inetpub\wwwroot\'
 > xp_dirtree 'C:\Users\'
+
+### check what users can be impersonated
+> SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_principals b ON a.grantor_principal_id = b.principal_id WHERE a.permission_name = 'IMPERSONATE'
