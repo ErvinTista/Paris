@@ -69,6 +69,13 @@ LDAP anonymous binds allow unauthenticated attackers to retrieve information fro
 ldapsearch -h <dc.ip> -x -b "DC=<domain-name>,DC=<LOCAL>" -s sub "*" | grep -m 1 -B 10 pwdHistoryLength
 Getting users with LDAP Anonymous
 ldapsearch -h 172.16.5.5 -x -b "DC=INLANEFREIGHT,DC=LOCAL" -s sub "(&(objectclass=user))"  | grep sAMAccountName: | cut -f2 -d" "
+
+
+ldapsearch -h <host.ip> -x -s base namingcontexts
+You find DC=something,DC=local, use for next command
+
+ldapsearch -x -b "DC=something,DC=local" > ldap-anonymous.txt
+
 ```
 
 Windapsearch can be userd to enumerate users, DA
