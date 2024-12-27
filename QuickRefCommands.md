@@ -191,6 +191,9 @@ Add rdp to box
 ```
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 nxc smb <targets> -u <user> -p <password>  -M rdp -o ACTION=enable
+
+Add User to RDP Group
+Add-LocalGroupMember -Group "Remote Desktop Users" -Member "domain\user"
 ```
 
 xfreerdp
