@@ -97,6 +97,7 @@ $Cred = New-Object System.Management.Automation.PSCredential('Domain\user', $Sec
 
 Enter ps-session
 $session = New-PSSession -ComputerName host.domain.local -Credential $Cred
+enter-pssession $session
 
 ```
 
