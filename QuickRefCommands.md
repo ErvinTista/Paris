@@ -79,6 +79,27 @@ snmpwalk -v2c -c <public> <IP.address> NET-SNMP-EXTEND-MIB::nsExtendObjects //ns
 
 ## Pivoting and Tunneling
 
+Enable winrm
+```
+Enable-PSRemoting -Force
+
+Add to trusted hosts
+winrm set winrm/config/client '@{TrustedHosts="target_machine_ip"}'
+```
+
+Enter a Ps-session
+```
+Create plain text password
+$SecPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
+
+Create $cred object
+$Cred = New-Object System.Management.Automation.PSCredential('Domain\user', $SecPassword)
+
+Enter ps-session
+$session = New-PSSession -ComputerName host.domain.local -Credential $Cred
+
+```
+
 ## Persistence
 
 ## Shells and One Liners
