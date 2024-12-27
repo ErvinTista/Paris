@@ -169,7 +169,14 @@ wmic service get name,displayname,startmode,pathname | findstr /i /v "C:\Windows
 Add rdp to box
 ```
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+nxc smb <targets> -u <user> -p <password>  -M rdp -o ACTION=enable
 ```
+
+xfreerdp
+```
+xfreerdp /u:<user> /p:'<password>' /d:<domain> /v:<victim.ip> /dynamic-resolution /drive:.,linux /bpp:8 /compression -themes -wallpaper /clipboard /audio-mode:0 /auto-reconnect -glyph-cache
+```
+
 
 Wordpress Enumeration
 ```
